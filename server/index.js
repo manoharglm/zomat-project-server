@@ -37,7 +37,7 @@ app.get('/api/restaurants/search/:search', (req, res) => {
     })
 })
 
-app.post('/api/bookings',(req, res) => {
+app.post('/api/bookings',(req, res) => {    
     Bookings.saveBookingData(req.body,req.get('Referrer')).then(data =>{
         res.status(200).send('Booking Done')
     }).catch((err) => {
@@ -46,8 +46,6 @@ app.post('/api/bookings',(req, res) => {
 })
 app.get('/api/bookings',(req, res) => {
     Bookings.getBookingData(req.get('Referrer')).then(data =>{
-        console.log(data);
-        
         res.status(200).send(data)
     }).catch((err) => {
         res.status(400).send(err.message)
@@ -64,6 +62,13 @@ app.post('/api/user',(req, res) => {
 
 app.get('/api/user',(req, res) => {
     Users.getUserDetails(req.get('Referrer')).then(data =>{
+        res.status(200).send(data)
+    }).catch((err) => {
+        res.status(400).send(err.message)
+    })
+})
+app.put('/api/user',(req, res) => {
+    Users.updateUserDetails(req.body,req.get('Referrer')).then(data =>{
         res.status(200).send(data)
     }).catch((err) => {
         res.status(400).send(err.message)
