@@ -54,7 +54,7 @@ app.get('/api/bookings',(req, res) => {
 
 app.post('/api/user',(req, res) => {
     Users.createUser(req.body).then(data =>{
-        res.status(200).send('Account created')
+        res.status(204).send('Account created')
     }).catch((err) => {
         res.status(400).send(err.message)
     })
