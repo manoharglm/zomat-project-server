@@ -22,13 +22,14 @@ app.get('/api/restaurants/trending', (req, res) => {
         res.status(400).send(err)
     })  
 })
-app.get('/api/restaurants/:id', (req, res) => {
-    Restaurants.getRestaurantbyId(req.params.id).then(data => {
-        res.status(200).send(data)
-    }).catch((err) => {
-        res.status(400).send(err.message)
-    })
-})
+
+// app.get('/api/restaurants/:id', (req, res) => {
+//     Restaurants.getRestaurantbyId(req.params.id).then(data => {
+//         res.status(200).send(data)
+//     }).catch((err) => {
+//         res.status(400).send(err.message)
+//     })
+// })
 app.get('/api/restaurants/search/:search', (req, res) => {
     Restaurants.getRestaurantsBySearch(req.params.search).then(data => {
         res.status(200).send(data)
